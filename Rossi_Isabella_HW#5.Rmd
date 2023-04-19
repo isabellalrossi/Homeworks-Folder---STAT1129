@@ -1,0 +1,73 @@
+---
+title: "HW#5"
+author: "Isabella Rossi"
+date: "`r Sys.Date()`"
+output: word_document
+---
+1. Define a class called "Human" that includes more than 3 class attributes, and also use constructor to define more than 3 instance attributes. Finally define 2 instances, say A and B. [1 point]
+
+```{r setup, include=FALSE}
+setClass("Human",
+         slots = c(
+           name = "character",
+           age = "numeric",
+           gender = "character",
+           height = "numeric",
+           weight = "numeric"
+         ))
+
+Human <- function(name, age, gender, height, weight) {
+  new("Human",
+      name = name,
+      age = age,
+      gender = gender,
+      height = height,
+      weight = weight)
+}
+
+A <- Human("Alice", 25, "Female", 165, 60)
+B <- Human("Bob", 30, "Male", 180, 80)
+
+print(A@name)
+print(B@name)
+print(A@height)
+print(B@gender)
+```
+
+2. define a class called Point that has two instance attributes x and y that are initialized to 0. Add a method distance to (0, 0) to the Point class that returns the distance of the point from the origin (0, 0), using formula of
+
+```{r cars}
+setClass("Point",
+         slots = c(
+           x = "numeric",
+           y = "numeric"
+         ))
+
+Point <- function(x = 0, y = 0) {
+  new("Point",
+      x = x,
+      y = y)
+}
+
+setMethod("distance",
+          signature = "Point",
+          function(object) {
+            dist <- sqrt(object@x^2 + object@y^2)
+            return(dist)
+          })
+
+p <- Point()
+
+distance_from_origin <- distance(p)
+print(distance_from_origin)
+```
+
+3. Options B and C are correct.
+
+4. The output is: Hello World
+
+5. The incorrect option is C.
+
+6. The output is: TypeError: only integers are allowed
+
+
